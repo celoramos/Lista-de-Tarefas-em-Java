@@ -1,21 +1,15 @@
 package ListaTarefas;
-
 import java.util.Scanner;
 
 public class ListaTarefas {
-
     static final int CAPACIDADE_MAXIMA = 20;
-
     static String[] descricoes = new String[CAPACIDADE_MAXIMA];
     static boolean[] concluidas = new boolean[CAPACIDADE_MAXIMA];
     static char[] prioridades = new char[CAPACIDADE_MAXIMA];
-
     static int totalTarefas = 0;
-
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         boolean executando = true;
         while (executando) {
             exibirMenu();
@@ -56,7 +50,7 @@ public class ListaTarefas {
         System.out.println("2. Adicionar item a lista de tarefas");
         System.out.println("3. Remover um item da lista");
         System.out.println("4. Marcar uma tarefa como concluida");
-        System.out.println("5. Exibir Estatísticas");
+        System.out.println("5. Exibir Estatísticas"); // Nova opção
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -69,16 +63,13 @@ public class ListaTarefas {
 
         System.out.print("Digite a descrição da nova tarefa: ");
         String descricao = scanner.nextLine();
-
         System.out.print("Digite a prioridade (A - Alta, M - Média, B - Baixa): ");
         char prioridade = scanner.nextLine().toUpperCase().charAt(0);
 
         descricoes[totalTarefas] = descricao;
         prioridades[totalTarefas] = prioridade;
         concluidas[totalTarefas] = false;
-
         totalTarefas++;
-
         System.out.println("Tarefa adicionada com sucesso!");
     }
 
@@ -111,7 +102,6 @@ public class ListaTarefas {
         descricoes[totalTarefas] = null;
         concluidas[totalTarefas] = false;
         prioridades[totalTarefas] = ' ';
-
         System.out.println("Tarefa " + numeroTarefa + " removida com sucesso.");
     }
 
@@ -124,13 +114,9 @@ public class ListaTarefas {
         }
 
         for (int i = 0; i < totalTarefas; i++) {
-
             String status = concluidas[i] ? "x" : " ";
-
             char prioridade = prioridades[i];
-
             String descricao = descricoes[i];
-
             System.out.printf("%02d. [%s] [%c] %s\n", (i + 1), status, prioridade, descricao);
         }
     }
@@ -146,7 +132,6 @@ public class ListaTarefas {
         System.out.print("Digite o número da tarefa que deseja marcar como concluída: ");
         int numeroTarefa = scanner.nextInt();
         scanner.nextLine();
-
         int indice = numeroTarefa - 1;
 
         if (indice < 0 || indice >= totalTarefas) {
@@ -173,6 +158,7 @@ public class ListaTarefas {
         if (totalTarefas > 0) {
             percentualConcluido = ((double) tarefasConcluidas / totalTarefas) * 100;
         }
+
         System.out.println("\n==================================");
         System.out.println("           ESTATÍSTICAS           ");
         System.out.println("==================================");
@@ -182,4 +168,4 @@ public class ListaTarefas {
         System.out.printf("Percentual Concluído:   %.0f%%\n", percentualConcluido);
         System.out.println("==================================");
     }
-}
+}s
